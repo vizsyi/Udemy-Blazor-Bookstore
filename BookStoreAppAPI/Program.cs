@@ -6,12 +6,27 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddEndpointsApiExplorer(); // Need for Swagger
+// Swashbuckle Swagger documentation generator
+builder.Services.AddSwaggerGen();            // Swashbuckle
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    // Swashbuckle JSON endpoint
+    app.UseSwagger();
+
+    // Swagger UI endpoint
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Our API V1");
+        c.RoutePrefix = ""; // root alatt jelenik meg
+    });
+
+    // .NET 9 OpenAPI JSON (optional, if other tool needs)
+    //app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
