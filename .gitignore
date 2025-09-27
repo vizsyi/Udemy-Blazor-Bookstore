@@ -1,0 +1,32 @@
+# dependencies
+
+
+# Compiled source
+*/bin
+
+# ASP.NET Core Web API project template
+*/obj
+*/Properties
+
+# Foreign libraries
+*/wwwroot/lib
+
+# Secret keys
+*/appsettings.json
+*/appsettings.Development.json
+
+#Work maps
+Logs
+Migrations
+
+#Images
+**/images
+**/icons/material-design-iconic-font/fonts
+
+# misc
+.vs
+.dockerignore
+#*.sln
+#NeonCRMWebApp.csproj
+*/Dockerfile
+*.http
