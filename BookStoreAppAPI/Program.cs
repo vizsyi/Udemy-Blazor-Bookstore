@@ -1,3 +1,5 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +11,10 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer(); // Need for Swagger
 // Swashbuckle Swagger documentation generator
 builder.Services.AddSwaggerGen();            // Swashbuckle
+
+builder.Host.UseSerilog(
+    //(ctx, lc) => lc.WriteTo.Console().ReadFrom.Configuration(ctx.Configuration)
+    );
 
 var app = builder.Build();
 
