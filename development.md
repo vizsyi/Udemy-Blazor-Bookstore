@@ -14,3 +14,6 @@ Microsoft.EntityFrameworkCore.Design
 
 ### Scafolding the database
 PM> Scaffold-DbContext '{Connection string}' Microsoft.EntityFrameworkCore.SqlServer -ContextDir Data -OutputDir Data
+
+## Automapping
+AutoMapper.Extensions.Microsoft.DependencyInjection

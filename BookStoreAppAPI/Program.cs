@@ -1,3 +1,5 @@
+using AutoMapper;
+using BookStoreAppAPI.Configuration;
 using BookStoreAppAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -7,6 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connString = builder.Configuration.GetConnectionString("BookStoreConnection");
 builder.Services.AddDbContext<BookStoreDBContext>(options => options.UseSqlServer(connString));
+
+//builder.Services.AddAutoMapper(typeof(MapperConfig));
+// Build a temporary ServiceProvider, hogy megkapjuk a loggerFactory-t
+ILoggerFactory loggerFactory = builder.Services.BuildServiceProvider().GetRequiredService<ILoggerFactory>();
+
+var mapperConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile<MapperConfig>();
+}, loggerFactory);
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
