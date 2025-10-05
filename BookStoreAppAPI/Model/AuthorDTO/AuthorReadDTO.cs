@@ -1,4 +1,4 @@
-﻿namespace BookStoreAppAPI.Model.Author
+﻿namespace BookStoreAppAPI.Model.AuthorDTO
 {
     public class AuthorReadDTO : BaseDTO
     {

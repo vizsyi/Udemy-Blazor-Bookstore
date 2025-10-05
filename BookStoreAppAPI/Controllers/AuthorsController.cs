@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BookStoreAppAPI.Data;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using AutoMapper;
-using BookStoreAppAPI.Model.Author;
+using BookStoreAppAPI.Model.AuthorDTO;
 
 namespace BookStoreAppAPI.Controllers
 {
@@ -91,7 +91,7 @@ namespace BookStoreAppAPI.Controllers
         // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Author>> PostAuthor(AuthorCreateDTO authorDTO)
+        public async Task<ActionResult<AuthorCreateDTO>> PostAuthor(AuthorCreateDTO authorDTO)
         {
             var author = _mapper.Map<Author>(authorDTO);
 

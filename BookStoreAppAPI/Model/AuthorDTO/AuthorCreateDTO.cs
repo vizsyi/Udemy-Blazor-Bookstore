@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BookStoreAppAPI.Model.Author
+namespace BookStoreAppAPI.Model.AuthorDTO
 {
-    public class AuthorUpdateDTO : BaseDTO
+    public class AuthorCreateDTO
     {
         [Required]
         [StringLength(60)]
