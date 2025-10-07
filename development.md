@@ -17,3 +17,6 @@ PM> Scaffold-DbContext '{Connection string}' Microsoft.EntityFrameworkCore.SqlSe
 
 ## Automapping
 AutoMapper.Extensions.Microsoft.DependencyInjection
+
+## Identity
+Microsoft.AspNetCore.Identity.EntityFrameworkCore

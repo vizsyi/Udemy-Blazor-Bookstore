@@ -1,6 +1,7 @@
 using AutoMapper;
 using BookStoreAppAPI.Configuration;
 using BookStoreAppAPI.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -9,6 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connString = builder.Configuration.GetConnectionString("BookStoreConnection");
 builder.Services.AddDbContext<BookStoreDBContext>(options => options.UseSqlServer(connString));
+
+builder.Services.AddIdentityCore<IdentityUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<BookStoreDBContext>();
 
 //builder.Services.AddAutoMapper(typeof(MapperConfig));
 // Build a temporary ServiceProvider, hogy megkapjuk a loggerFactory-t

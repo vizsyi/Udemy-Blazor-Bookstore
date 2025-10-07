@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookStoreAppAPI.Data;
 
-public partial class BookStoreDBContext : DbContext
+public partial class BookStoreDBContext : IdentityDbContext
 {
     public BookStoreDBContext()
     {
@@ -21,6 +22,7 @@ public partial class BookStoreDBContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Author>(entity =>
         {
             entity.Property(e => e.FirstName).HasMaxLength(60);
